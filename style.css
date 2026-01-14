@@ -1,0 +1,853 @@
+/* ✅ FULL SIDE SCROLL FIX */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ✅ MAIN APP CONTAINER FIX */
+#app {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 12px;
+  overflow-x: hidden;
+}
+
+/* ✅ GRID MENU FIX */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+/* ✅ BUTTON FIX */
+.menu-btn {
+  width: 100%;
+  white-space: normal;
+}
+
+/* ✅ IMAGE / CARD FIX */
+img, video, iframe, .card {
+  max-width: 100%;
+  height: auto;
+}
+/* ------------------------------
+   GLOBAL THEME COLORS
+------------------------------ */
+:root{
+  --bg:#fffaf0;
+  --accent:#ff8c42;
+  --card:#ffffff;
+  --text:#222;
+}
+
+/* Reset */
+*{box-sizing:border-box; margin:0; padding:0;}
+
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x: hidden;
+}
+
+
+/* ------------------------------
+   HEADER & TITLE ANIMATION
+------------------------------ */
+header{
+  text-align:center;
+  margin-bottom:14px;
+}
+
+.animated-title {
+    font-size: 34px;
+    font-weight: 900;
+
+    background: linear-gradient(45deg,
+        #ff3b3b, #ff9e2c, #fff12c,
+        #35e02e, #2ed9ff, #8a2eff, #ff2ee6
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientFlow 6s ease infinite, popIn 0.7s ease forwards;
+    text-shadow: 0px 0px 18px rgba(255,255,255,0.4);
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.subtitle{
+  color:#666;
+  margin-top:4px;
+  font-size:14px;
+}
+
+/* ------------------------------
+   MENU BUTTONS
+------------------------------ */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.menu-btn{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:14px;
+  font-size:17px;
+  border-radius:14px;
+  cursor:pointer;
+  box-shadow:0 6px 14px rgba(0,0,0,0.08);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.menu-btn:active{
+  transform:scale(0.96);
+  box-shadow:0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* ------------------------------
+   CARD SCREEN
+------------------------------ */
+.card{
+  background:var(--card);
+  padding:14px;
+  border-radius:14px;
+  min-height:240px;
+  text-align:center;
+  box-shadow:0 8px 18px rgba(0,0,0,0.06);
+}
+
+#screen-content{
+  font-size:18px;
+  padding:8px;
+}
+
+/* ------------------------------
+   ALPHABETS + NUMBERS VIEW
+------------------------------ */
+.big-letter{
+  font-size:78px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.controls{
+  margin-top:14px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+}
+
+.controls button{
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  background:#f0f0f0;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 4px 8px rgba(0,0,0,0.06);
+}
+
+.play{
+  background:var(--accent);
+  color:white;
+}
+/* ====== Colours grid responsive fix ====== */
+
+/* ensure overall no horizontal overflow */
+html, body, #app {
+  overflow-x: hidden;
+}
+
+/* color grid container: responsive columns */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  justify-items: stretch;
+}
+
+/* each color card */
+.color-card {
+  width: 100%;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: 18px;
+  overflow: hidden;
+  font-weight: 700;
+}
+
+/* smaller screen adjustment */
+@media (max-width: 420px) {
+  .color-card {
+    font-size: 16px;
+    min-height: 64px;
+  }
+  .color-grid {
+    gap: 8px;
+  }
+}
+
+/* parent card box must hide overflow */
+.card, .screen-card, #color-preview-box {
+  overflow: hidden;
+}
+/* ------------------------------
+   COLOURS VIEW
+------------------------------ */
+.color-btn-inline{
+  width:58px;
+  height:58px;
+  border-radius:10px;
+  border:2px solid #ddd;
+  cursor:pointer;
+  box-shadow:0 5px 10px rgba(0,0,0,0.06);
+}
+
+#color-preview-box{
+  width:100%;
+  height:80px;
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  font-size:20px;
+  font-weight:700;
+  box-shadow:0 5px 12px rgba(0,0,0,0.08);
+}
+
+/* ------------------------------
+   FRUITS VIEW
+------------------------------ */
+.fruit-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:10px;
+}
+
+.fruit-item{
+  background:#fafafa;
+  padding:12px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.fruit-name{
+  font-size:18px;
+  font-weight:700;
+}
+
+.fruit-play{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+footer{
+  margin-top:16px;
+  text-align:center;
+  font-size:13px;
+  color:#666;
+}
+
+/* Small screen adjust */
+@media(max-width:420px){
+  .big-letter{font-size:62px;}
+  .menu-btn{font-size:15px;}
+}
+/* --- Extra styles: color grid, fruit images, animated buttons --- */
+
+/* Gradient buttons for menu */
+.menu-btn {
+  background: linear-gradient(90deg,#ff8c42 0%, #ff6b6b 50%, #ff9e2c 100%);
+  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+.menu-btn:hover { transform: translateY(-4px); box-shadow:0 14px 28px rgba(0,0,0,0.12); }
+
+/* Pulse animation when tapped */
+.pulse {
+  animation: pulseGlow .6s ease;
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 rgba(255,140,66,0.0); transform:scale(1); }
+  50% { box-shadow: 0 8px 30px rgba(255,140,66,0.28); transform:scale(1.03); }
+  100% { box-shadow: 0 0 0 rgba(255,140,66,0.0); transform:scale(1); }
+}
+
+/* Colour grid */
+.color-grid {
+  display:grid;
+  grid-template-columns: repeat(5,1fr);
+  gap:10px;
+}
+.color-card {
+  height:80px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:#fff;
+  cursor:pointer;
+  border:2px solid rgba(0,0,0,0.04);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.color-card:active { transform:scale(.98); }
+
+/* colour name dark/light readability */
+.color-card.light { color:#000; border:1px solid rgba(0,0,0,0.06); }
+
+/* preview box */
+#color-preview-box {
+  width:100%;
+  height:100px;
+  margin-top:12px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:20px;
+  color:#fff;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+/* Fruit cards */
+.fruit-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.fruit-card {
+  background:#fff;
+  border-radius:12px;
+  padding:8px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 6px 12px rgba(0,0,0,0.04);
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.fruit-card:hover { transform:translateY(-6px); box-shadow:0 12px 24px rgba(0,0,0,0.08); }
+.fruit-img {
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:8px;
+}
+.fruit-name { font-weight:700; font-size:16px; }
+
+/* small play button style inside card */
+.fruit-play-btn {
+  background: linear-gradient(90deg,#4cd964, #22c55e);
+  color:#fff;
+  border:none;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+/* Fruits Grid */
+.fruit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+    padding: 15px;
+}
+
+/* Each fruit card */
+.fruit-card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    padding: 12px;
+    text-align: center;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/* Hover animation */
+.fruit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+}
+
+/* Fruit image */
+.fruit-img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Fruit name */
+.fruit-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Play button */
+.fruit-play-btn {
+    background: #32cd32;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    width: 90%;
+}
+
+.fruit-play-btn:hover {
+    background: #29b329;
+}
+/* ========= Card Container Grid ========= */
+.fruit-grid,
+.bird-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  justify-content: center;
+  padding: 10px 14px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ========= Beautiful Card With Soft Background ========= */
+.fruit-card,
+.bird-card {
+  background: linear-gradient(135deg, #ffffff, #f6f9ff);
+  border-radius: 18px;
+  padding: 18px 12px 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+  animation: fadeInUp .45s ease both;
+}
+
+/* ========= Hover Animation ========= */
+.fruit-card:hover,
+.bird-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ========= Image Style ========= */
+.fruit-img,
+.bird-img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  object-position: center;
+  transition: transform .25s ease;
+  margin-bottom: 10px;
+}
+
+
+/* Click pulse effect */
+.fruit-card:active .fruit-img,
+.bird-card:active .bird-img {
+  transform: scale(.94);
+}
+
+/* ========= Bird special background ========= */
+.bird-card {
+  background: linear-gradient(135deg, #e9f7ff, #ffffff);
+  border: 1px solid rgba(0, 140, 255, 0.15);
+}
+
+/* ========= Text ========= */
+.fruit-name,
+.bird-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+/* ========= Play Button ========= */
+.fruit-play-btn,
+.bird-play-btn {
+  margin-top: auto;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #34c759;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #2fa34e;
+  transition: transform .15s ease;
+}
+
+.fruit-play-btn:active,
+.bird-play-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #2fa34e;
+}
+
+/* ========= Smooth Entry Animation ========= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========= Mobile Responsive ========= */
+@media (max-width: 520px) {
+  .fruit-grid, .bird-grid {
+    grid-template-columns: 1fr;
+  }
+  .fruit-card, .bird-card {
+    min-height: 220px;
+  }
+  .fruit-img, .bird-img {
+    width: 110px;
+    height: 110px;
+  }
+}
+/* ====== Animated gradient background for the whole card area ====== */
+.bird-card,
+.fruit-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 18px 12px 22px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  /* fallback solid */
+  background: linear-gradient(180deg, #ffffff, #f6fbff);
+}
+
+/* Animated gradient overlay (subtle moving colors) */
+.bird-card::before,
+.fruit-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg,
+    rgba(255,255,255,0.06) 0%,
+    rgba(220,245,255,0.4) 25%,
+    rgba(255,240,240,0.03) 50%,
+    rgba(240,255,240,0.02) 75%,
+    rgba(255,255,255,0.06) 100%);
+  filter: blur(8px) saturate(1.05);
+  transform: translate3d(0,0,0);
+  opacity: .95;
+  pointer-events: none;
+  animation: bgShift 8s linear infinite;
+}
+
+/* Keep content above overlay */
+.bird-card > * ,
+.fruit-card > * { position: relative; z-index: 1; }
+
+/* Hover / focus lift */
+.bird-card:hover, .fruit-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* Soft floating motion when cards appear */
+@keyframes floatIn {
+  0% { transform: translateY(18px) scale(.995); opacity: 0; }
+  60% { transform: translateY(-6px) scale(1.005); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Slight background shift for liveliness */
+@keyframes bgShift {
+  0% { transform: translateX(-10%) translateY(-5%) scale(1.02) rotate(0deg); }
+  50% { transform: translateX(10%) translateY(5%) scale(1.03) rotate(.5deg); }
+  100% { transform: translateX(-10%) translateY(-5%) scale(1.02) rotate(0deg); }
+}
+
+/* subtle image bounce when load or click */
+.bird-img, .fruit-img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  object-position: center;
+  transition: transform .25s ease;
+}
+
+/* When card first rendered - run floatIn */
+.bird-card, .fruit-card {
+  animation: floatIn .6s cubic-bezier(.2,.9,.2,1) both;
+}
+
+/* Play button small pop animation on click */
+.fruit-play-btn:active, .bird-play-btn:active {
+  transform: translateY(4px) scale(.98);
+}
+
+/* optional: small shine animation on hover for the play button */
+.bird-play-btn, .fruit-play-btn {
+  position: relative;
+  overflow: hidden;
+}
+.bird-play-btn::after, .fruit-play-btn::after {
+  content: "";
+  position: absolute;
+  left: -60%;
+  top: -30%;
+  width: 40%;
+  height: 160%;
+  background: rgba(255,255,255,0.14);
+  transform: skewX(-18deg);
+  transition: left .45s ease;
+  pointer-events: none;
+}
+.bird-play-btn:hover::after, .fruit-play-btn:hover::after {
+  left: 140%;
+}
+
+/* Bird-specific tint (gentle) */
+.bird-card::before {
+  background: linear-gradient(120deg,
+    rgba(240,250,255,0.6) 0%,
+    rgba(230,245,255,0.4) 40%,
+    rgba(255,250,245,0.02) 70%,
+    rgba(255,255,255,0.6) 100%);
+}
+
+/* Fruit/Vegetable tint slightly different */
+.fruit-card::before {
+  background: linear-gradient(120deg,
+    rgba(255,250,240,0.6) 0%,
+    rgba(245,255,245,0.02) 40%,
+    rgba(255,250,250,0.05) 70%,
+    rgba(255,255,255,0.6) 100%);
+}
+
+/* ===== Responsive: one-column on small screens ===== */
+@media (max-width: 520px) {
+  .fruit-grid, .bird-grid { grid-template-columns: 1fr; gap: 14px; padding: 8px; }
+  .bird-img, .fruit-img { width: 110px; height: 110px; }
+  .bird-card, .fruit-card { min-height: 200px; padding-bottom: 16px; }
+}
+/* ===== Footer Style With Premium Border ===== */
+.app-footer {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 12px 0;
+
+  /* Gradient Text */
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  /* Border on all sides */
+  border: 3px solid;
+  border-image: linear-gradient(90deg, #ff8a00, #e52e71, #ff4b2b) 1;
+
+  border-radius: 12px;
+
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Soft Glow */
+  box-shadow: 0 0 15px rgba(255, 90, 120, 0.4);
+}
+
+/* Name Highlight */
+.app-footer span {
+  font-weight: 900;
+  font-size: 20px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+/* ===== Main Content Area Border (Premium Gradient) ===== */
+
+#screen {
+  border: 3px solid;
+  border-image: linear-gradient(45deg, #ff8a00, #e52e71, #6a11cb) 1;
+  border-radius: 18px;
+
+  padding: 20px;
+  margin-top: 20px;
+
+  /* Soft Glow */
+  box-shadow: 0 0 18px rgba(255, 80, 120, 0.25);
+
+  /* Smooth Animation */
+  animation: borderGlow 3s linear infinite;
+}
+
+/* Optional animated glowing border */
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 80, 120, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(255, 80, 120, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 80, 120, 0.2);
+  }
+}
+/* Candy + Neon Glow Animated Background */
+#screen {
+  padding: 22px;
+  border-radius: 22px;
+  min-height: 260px;
+
+  /* Candy gradient + neon mix */
+  background: linear-gradient(135deg, 
+    #ff9ae6, 
+    #ffd1a1, 
+    #a3e7ff, 
+    #bfa1ff, 
+    #ffa3b8
+  );
+  background-size: 400% 400%;
+
+  /* Neon glow shadow */
+  box-shadow: 
+    0 0 12px rgba(255, 105, 180, 0.5),
+    0 0 22px rgba(0, 255, 255, 0.45),
+    0 0 32px rgba(255, 182, 193, 0.35);
+
+  animation: candyGlow 7s ease-in-out infinite;
+}
+
+/* Animation */
+@keyframes candyGlow {
+  0% {
+    background-position: 0% 50%;
+    box-shadow: 
+      0 0 12px rgba(255, 105, 180, 0.5),
+      0 0 22px rgba(0, 255, 255, 0.45),
+      0 0 32px rgba(255, 182, 193, 0.35);
+  }
+  50% {
+    background-position: 100% 50%;
+    box-shadow: 
+      0 0 20px rgba(255, 20, 147, 0.65),
+      0 0 35px rgba(0, 255, 255, 0.55),
+      0 0 50px rgba(255, 182, 193, 0.45);
+  }
+  100% {
+    background-position: 0% 50%;
+    box-shadow: 
+      0 0 12px rgba(255, 105, 180, 0.5),
+      0 0 22px rgba(0, 255, 255, 0.45),
+      0 0 32px rgba(255, 182, 193, 0.35);
+  }
+}
+/* ==== HEADER ALIGN ==== */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+
+/* ==== RAINBOW ICONS ==== */
+.rainbow {
+  font-size: 36px;
+  animation: floatRainbow 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 7px rgba(255, 0, 255, 0.7))
+          drop-shadow(0 0 12px rgba(0, 200, 255, 0.7))
+          drop-shadow(0 0 15px rgba(255, 255, 0, 0.7));
+}
+
+.rainbow.left { animation-delay: 0s; }
+.rainbow.right { animation-delay: 1s; }
+
+/* Floating Animation */
+@keyframes floatRainbow {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+
+/* ==== KIDDOPEDIA TITLE ANIMATED ==== */
+.kiddopedia-title {
+  font-size: 36px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ff6bd6, #6b8dff, #52ffb8, #ffe56b);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: titleGlow 5s ease infinite;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.7));
+}
+
+/* Title animated gradient */
+@keyframes titleGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
