@@ -1,0 +1,1 @@
+Animals assets folder
